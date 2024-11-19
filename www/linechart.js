@@ -1,6 +1,6 @@
 const categories = ["TopPt1", "RemainingTop1", "Next9", "Next40", "Bottom50"];
 
-function drawLineChart(svgId, rawData, mode) {
+function drawLineChart(svg, rawData, mode) {
   const lineChartLayout = { top: 20, right: 30, bottom: 50, left: 60 };
   lineChartLayout.width = 700 - lineChartLayout.left - lineChartLayout.right;
   lineChartLayout.height = 400 - lineChartLayout.top - lineChartLayout.bottom;
@@ -20,17 +20,8 @@ function drawLineChart(svgId, rawData, mode) {
     maxY = 60_000_000;
   }
 
-  // Select or create the SVG
-  const svg = d3
-    .select(svgId)
-    .attr(
-      "width",
-      lineChartLayout.width + lineChartLayout.left + lineChartLayout.right,
-    )
-    .attr(
-      "height",
-      lineChartLayout.height + lineChartLayout.top + lineChartLayout.bottom,
-    )
+  // set up SVG
+  svg
     .selectAll("g.chart-content")
     .data([null]) // bind a single (unused) data element to ensure a single <g>
     .join("g")

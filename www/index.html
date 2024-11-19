@@ -117,15 +117,9 @@ using this in favor of our own copy of Bulma/D3/etc. but that can wait.
           <br><br>
           We can also see this on a chart of assets over time:
         </p>
-          <div class="block">
-            <svg id="lineChartDollars"></svg>
-          </div>
-        <p>
-        </p>
-        <div class="block">
-          <svg id="lineChartPercent"></svg>
-        </div>
-        <div id="pyramidPercent"></div>
+        <div class="block" id="lineChartDollars"></div>
+        <div class="block" id="lineChartPercent"> </div>
+        <div class="block" id="pyramidPercent"></div>
         <p>
           This is more visible in percentage terms, in 2003 the two groups held a 36.2% and 36.0% share, respectively.
           In 2024, there is a 6% gulf between them, but it is not the 1-10% that gained the most, the .1% went from 9% in 2003 to over 13%.
@@ -197,6 +191,7 @@ using this in favor of our own copy of Bulma/D3/etc. but that can wait.
         to import one another.  JS does have that idea, but it is more than
         you need for single file apps like this one.
     -->
+    <script src="utils.js"></script>
     <script src="linechart.js"></script>
     <script src="pyramid.js"></script>
     <script src="main.js"></script>

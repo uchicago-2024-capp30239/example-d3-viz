@@ -1,3 +1,13 @@
+// create empty chart SVGs - pyramid charts start with a centered group
+const dollarsG = makeChart("#pyramidDollars", 200)
+  .append("g")
+  .attr("transform", `translate(${chartWidth / 2}, ${margin.top})`);
+const percentG = makeChart("#pyramidPercent", 200)
+  .append("g")
+  .attr("transform", `translate(${chartWidth / 2}, ${margin.top})`);
+const lineDollars = makeChart("#lineChartDollars", 400);
+const linePercent = makeChart("#lineChartPercent", 400);
+
 // global state
 let levelsData = []; // placeholder of data to be loaded
 let displayIndex = 0; // currently displayed year index
@@ -8,8 +18,8 @@ let timerFunc = null; // handle to timer function if animating
 function updateCharts() {
   drawPyramid(percentG, "percent");
   drawPyramid(dollarsG, "dollars");
-  drawLineChart("lineChartDollars", levelsData, "dollars");
-  drawLineChart("lineChartPercent", levelsData, "percent");
+  drawLineChart(lineDollars, levelsData, "dollars");
+  drawLineChart(linePercent, levelsData, "percent");
 }
 
 // disable timer (see below setInterval code)

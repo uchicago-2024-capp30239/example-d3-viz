@@ -1,30 +1,4 @@
-// global settings
-const svgWidth = 700;
-const svgHeight = 200;
-const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-const chartWidth = svgWidth - margin.left - margin.right;
 const barHeight = 20;
-
-// helper function to make multiple SVGs on the page
-function makeChartBasis(id) {
-  // create a root <g> center aligned
-  const svg = d3
-    .select(id)
-    .append("svg")
-    .attr("width", svgWidth)
-    .attr("height", svgHeight)
-    .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`);
-  return (
-    svg
-      // centered group to contain animation
-      .append("g")
-      .attr("transform", `translate(${svgWidth / 2}, ${margin.top})`)
-  );
-}
-
-// create empty chart SVGs
-const dollarsG = makeChartBasis("#pyramidDollars");
-const percentG = makeChartBasis("#pyramidPercent");
 
 // create scale functions for each mode
 const trillionsScale = d3

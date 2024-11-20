@@ -10,14 +10,14 @@ const linePercent = makeChart("#lineChartPercent", 400);
 
 // global state
 let levelsData = []; // placeholder of data to be loaded
-let displayIndex = 0; // currently displayed year index
+let yearIndex = 0; // currently displayed year index
 let timerFunc = null; // handle to timer function if animating
 
 // called every frame of animation -- draw all charts
 // actual functions to draw charts are in other JS files (pyramid/linechart.js)
 function updateCharts() {
-  drawPyramid(percentG, "percent");
-  drawPyramid(dollarsG, "dollars");
+  drawPyramid(dollarsG, yearIndex, "dollars");
+  drawPyramid(percentG, yearIndex, "percent");
   drawLineChart(lineDollars, levelsData, "dollars");
   drawLineChart(linePercent, levelsData, "percent");
 }
@@ -43,7 +43,7 @@ d3.csv("levels.csv").then((data) => {
 // if they drag the slider, update charts
 d3.select("#timeSlider").on("change", function (e) {
   // update the index & redraw
-  displayIndex = e.target.value;
+  yearIndex = e.target.value;
   updateCharts();
 });
 
@@ -59,21 +59,21 @@ d3.select("#playPause").on("click", function (e) {
     d3.select(e.target).text("Pause");
 
     // reset timer if they've gone past the end
-    if (displayIndex >= levelsData.length) {
-      displayIndex = 0;
+    if (yearIndex >= levelsData.length) {
+      yearIndex = 0;
     }
 
     // setInterval will call this function every 100ms until cancelled
     // the variable "timerFunc" stores a reference to the timer so we can
     // pause/cancel it
     timerFunc = setInterval(function () {
-      displayIndex += 1;
+      yearIndex += 1;
       const timeSlider = d3.select("#timeSlider");
-      if (displayIndex >= levelsData.length && timerFunc) {
+      if (yearIndex >= levelsData.length && timerFunc) {
         stopTimer();
-        displayIndex = levelsData.length - 1;
+        yearIndex = levelsData.length - 1;
       }
-      timeSlider.attr("value", displayIndex);
+      timeSlider.attr("value", yearIndex);
       updateCharts();
     }, 100);
   } else if (timerFunc) {

@@ -5,7 +5,8 @@ function drawLineChart(svg, rawData, mode) {
   lineChartLayout.width = 700 - lineChartLayout.left - lineChartLayout.right;
   lineChartLayout.height = 400 - lineChartLayout.top - lineChartLayout.bottom;
 
-  let chartData = rawData;
+  // make a copy of the data so it can be mutated
+  let chartData = rawData.map((d) => Object.assign({}, d));
   let maxY = 60_000_000;
 
   if (mode === "percent") {

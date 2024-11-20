@@ -17,9 +17,9 @@ const labelBars = {
   percent: (d) => `${(d * 100).toFixed(1)}%`,
 };
 
-function drawPyramid(chartG, mode) {
-  // pick the row to display using the index
-  const row = levelsData[displayIndex];
+function drawPyramid(chartG, yearIdx, mode) {
+  // pick the row to display using the (globally-set) index
+  const row = levelsData[yearIdx];
   const categories = ["TopPt1", "RemainingTop1", "Next9", "Next40", "Bottom50"];
 
   // use raw values in dollars mode

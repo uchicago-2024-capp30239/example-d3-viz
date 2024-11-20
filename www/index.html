@@ -38,32 +38,11 @@ using this in favor of our own copy of Bulma/D3/etc. but that can wait.
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
     />
+    <!-- load a custom CSS file from the same directory that this file is in -->
+    <link rel="stylesheet" href="custom.css" />
+
     <style type="text/css">
-      #pyramids {
-        width: 700px;
-      }
-      .inverted {
-        background-color: #ffffee;
-        padding: 3px;
-      }
-      body {
-        background-color: #333333;
-        color: #ffffee;
-      }
-      h3.subtitle {
-        color: rgb(253, 141, 60);
-        text-align: center;
-      }
-      a {
-        color: rgb(253, 141, 60);
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      #pyramidControls {
-        display: grid;
-        grid-template-columns: 1fr 9fr;
-      }
+      /* custom styles could also go here, sometimes I add some here while experimenting */
     </style>
     <!--
        This was not in the bulma template, but I have added it here, this uses D3 from a CDN.
